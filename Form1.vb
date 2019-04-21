@@ -33,20 +33,20 @@
     Function first()
         locationsInteger = ToIntegerForm(locations)
         proccessInteger = ToIntegerForm(proccess)
-        MessageBox.Show("locations" & vbLf & Join(ToStringForm(locationsInteger), vbLf) & vbLf & "proccess" & vbLf & Join(ToStringForm(proccessInteger), vbLf))
+        MessageBox.Show("locations" & vbLf & Join(ToStringForm(locationsInteger), vbLf) & vbLf & vbLf & "proccess" & vbLf & Join(ToStringForm(proccessInteger), vbLf))
         Dim counter As Integer = 0
 
         For i = 0 To proccessInteger.length - 1
 this:
-            Array.Sort(locationsInteger)
+            BestSort()
 
             If locationsInteger(counter) >= proccessInteger(i) Then
                 locationsInteger(counter) -= proccessInteger(i)
                 proccessInteger(i) = 0
                 counter = 0
 
-                Array.Sort(locationsInteger)
-                MessageBox.Show("locations" & vbLf & Join(ToStringForm(locationsInteger), vbLf) & vbLf & "proccess" & vbLf & Join(ToStringForm(proccessInteger), vbLf))
+                BestSort()
+                MessageBox.Show("locations" & vbLf & Join(ToStringForm(locationsInteger), vbLf) & vbLf & vbLf & "proccess" & vbLf & Join(ToStringForm(proccessInteger), vbLf))
 
             Else
                 counter += 1
@@ -54,6 +54,10 @@ this:
             End If
 
         Next
+    End Function
+
+    Function BestSort()
+        Array.Sort(locationsInteger)
     End Function
 
     Function ToIntegerForm(StringArray() As String)
